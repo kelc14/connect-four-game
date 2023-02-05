@@ -1,18 +1,54 @@
+:root {
+	/* default values */
+	--bg-color: rgb(155, 244, 214);
+	--theme-font: 'Unbounded', cursive;
+
+	/* player1 */
+	--player-1-color: rgb(255, 0, 0);
+
+	/* player2 */
+	--player-2-color: rgb(0, 0, 255);
+}
+
 /* game board table */
 
+html {
+	background-color: var(--bg-color);
+}
+
+h1 {
+	font-family: var(--theme-font);
+	font-size: 2.5rem;
+	font-weight: 900;
+	text-align: center;
+}
+div#game {
+	margin: auto;
+	width: 430px;
+}
+
 #board td {
-  width: 50px;
-  height: 50px;
-  border: solid 1px #666;
+	width: 50px;
+	height: 50px;
+	border: solid 1px #666;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
 
 .piece {
-  /* TODO: make into circles */
-  margin: 5px;
-  width: 80%;
-  height: 80%;
+	/* TODO: make into circles */
+	margin: 5px;
+	width: 80%;
+	height: 80%;
+	border-radius: 50%;
+}
+
+div.player1 {
+	background-color: var(--player-1-color);
+}
+
+div.player2 {
+	background-color: var(--player-2-color);
 }
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
@@ -20,9 +56,9 @@
 /* column-top is table row of clickable areas for each column */
 
 #column-top td {
-  border: dashed 1px lightgray;
+	border: dashed 1px lightgray;
 }
 
 #column-top td:hover {
-  background-color: gold;
+	background-color: gold;
 }
