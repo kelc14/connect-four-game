@@ -9,9 +9,23 @@
 </head>
 <body>
 <div id="page">
-  <h1>Connect Four</h1>
+  <div id="header">
+    <div id="header-left"> <a href="index.html">NEW GAME</a></div>
+    <div id="header-center"><h1>CONNECT FOUR</h1></div>
+    <div id="header-right"></div>
+  </div>
   <div id="game">
     <table id="board"></table>
+  </div>
+</div>
+
+<!-- game - over pop-up -->
+<div class="game-over-popup">
+  <div class="game-over">
+    <span>YOU WIN!</span>
+    <span><button class="new-game" id="new-game">PLAY AGAIN</button></span>
+    <span class='score' id="player1-score"></span>
+    <span class='score' id="player2-score"></span>
   </div>
 </div>
 

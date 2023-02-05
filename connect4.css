@@ -1,43 +1,104 @@
 :root {
 	/* default values */
-	--bg-color: rgb(155, 244, 214);
+	--bg-color: rgb(0, 0, 0);
 	--theme-font: 'Unbounded', cursive;
+	--theme-font-color: lightgray;
 
 	/* player1 */
-	--player-1-color: rgb(255, 0, 0);
+	--player-1-color: rgb(191, 0, 255);
 
 	/* player2 */
-	--player-2-color: rgb(0, 0, 255);
+	--player-2-color: rgb(0, 255, 123);
 }
 
 /* game board table */
 
 html {
 	background-color: var(--bg-color);
+	margin-top: 0px;
+	margin-left: 0px;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+#page {
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+/* header */
+div#header {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-content: space-evenly;
+	box-sizing: border-box;
+	padding-bottom: 10px;
+	width: 100vw;
+	height: 8vh;
+}
+#header-left {
+	/* background-color: blue; */
+	width: 25vw;
+}
+#header-left a {
+	font-family: var(--theme-font);
+	color: black;
+	font-size: 1.5rem;
+	font-weight: 900;
+	position: absolute;
+	top: 10px;
+	left: 30px;
+	margin: 0;
+	word-wrap: normal;
+	text-decoration: none;
+	background: #001aff;
+	border: 4px dotted lightgray;
+}
+
+#header-center {
+	/* background-color: red; */
+	width: 50vw;
+}
+#header-right {
+	/* background-color: yellow; */
+	width: 25vw;
 }
 
 h1 {
 	font-family: var(--theme-font);
+	color: var(--theme-font-color);
 	font-size: 2.5rem;
 	font-weight: 900;
 	text-align: center;
+	margin: 0;
 }
+
 div#game {
 	margin: auto;
-	width: 430px;
+	width: 100vw;
+}
+
+table {
+	margin: 0 auto;
+	width: 60vw;
+	max-height: 80vh;
+	aspect-ratio: 1 / 1;
 }
 
 #board td {
 	width: 50px;
 	height: 50px;
-	border: solid 1px #666;
+	border: solid 5px #001aff;
+	position: relative;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
 
 .piece {
 	/* TODO: make into circles */
-	margin: 5px;
+	margin: 0 auto;
 	width: 80%;
 	height: 80%;
 	border-radius: 50%;
@@ -57,8 +118,75 @@ div.player2 {
 
 #column-top td {
 	border: dashed 1px lightgray;
+	padding: 0px;
 }
 
-#column-top td:hover {
+/* #column-top td:hover {
 	background-color: gold;
+} */
+
+.triangle-down {
+	font-size: 5rem;
+	font-weight: 800;
+	margin: 0 auto;
+	color: lightgray;
+	text-align: center;
+}
+div.triangle-down:hover {
+	color: #0fa;
+	text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+		0 0 82px #00ffaa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+/* from popup in memory game */
+
+.show {
+	display: block;
+}
+
+.game-over-popup {
+	display: none;
+}
+
+.game-over {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 700;
+	font-size: 50px;
+	background-color: white;
+	width: 60%;
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	border: 5px solid black;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 3;
+}
+
+.new-game {
+	width: 50%;
+	height: 150px;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 700;
+	font-size: 50px;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: black;
+	border-radius: 20px;
+	margin: 0;
+	padding: 0px;
+	left: 50%;
+}
+
+.new-game:hover {
+	background-color: black;
+	color: white;
+}
+
+#score {
+	padding: 0px;
 }

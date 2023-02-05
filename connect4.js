@@ -31,6 +31,12 @@ const makeHtmlBoard = () => {
 		const headCell = document.createElement('td');
 		headCell.setAttribute('id', x);
 		top.append(headCell);
+		const triDown = document.createElement('div');
+		triDown.setAttribute('class', 'triangle-down');
+		let triangle = '&#8681';
+		triDown.innerHTML = triangle;
+		triDown.setAttribute('id', x);
+		headCell.appendChild(triDown);
 	}
 	htmlBoard.append(top);
 
@@ -167,3 +173,33 @@ const checkTie = () => {
 };
 
 const endGame = (msg) => alert(msg);
+
+///game over popup from memory game to be reworked
+
+// if (matchedCards.length === 10) {
+// 	//set div to id game over
+// 	let gameOverPopup = document.querySelector('.game-over-popup');
+// 	gameOverPopup.setAttribute('class', 'show');
+// 	// button for restart
+
+// 	const playAgainButton = document.querySelector('#new-game');
+// 	playAgainButton.addEventListener('click', function () {
+// 		window.location.reload();
+// 	});
+
+// 	// save score to high score if its the best
+// 	if (score < highScore || highScore === 0) {
+// 		highScore = score;
+// 		localStorage.setItem('highScore', highScore);
+// 	}
+
+// 	let highScoreDiv = document.querySelector('#high-score');
+
+// 	highScoreDiv.innerText = `High Score: ${highScore}`;
+
+// 	let yourScoreDiv = document.querySelector('#your-score');
+// 	yourScoreDiv.innerText = `Your score: ${score}`;
+
+// 	// save high score and theme to local storage
+// 	console.log('game-over');
+// }
