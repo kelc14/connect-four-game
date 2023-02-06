@@ -3,6 +3,13 @@ const width = 7;
 const height = 6;
 const board = [];
 let currPlayer = 'player1'; // active player: 1 or 2
+let player1Score = localStorage.getItem('player1Score') || 0;
+let player2Score = localStorage.getItem('player2Score') || 0;
+let player1ScoreDiv = document.querySelector('#player1-score');
+player1ScoreDiv.innerText = `Player 1: ${player1Score}`;
+let player2ScoreDiv = document.querySelector('#player2-score');
+player2ScoreDiv.innerText = `Player 2: ${player2Score}`;
+let resetSwitch = document.querySelector('#reset');
 
 //*****METHODS FOR START*****//
 
@@ -71,7 +78,7 @@ function handleClick(evt) {
 
 	// check for win
 	if (checkForWin()) {
-		return endGame(`Player ${currPlayer} won!`);
+		return endGame(currPlayer);
 	}
 
 	// check for tie
@@ -161,6 +168,8 @@ const switchPlayer = () =>
 		? (currPlayer = 'player2')
 		: (currPlayer = 'player1');
 
+// ~~~~~~ METHODS FOR END OF GAME ~~~~~~~~~~ //
+
 const checkTie = () => {
 	for (let j = 0; j < height; j++) {
 		for (let i = 0; i < width; i++) {
@@ -172,34 +181,43 @@ const checkTie = () => {
 	}
 };
 
-const endGame = (msg) => alert(msg);
+const endGame = (currPlayer) => {
+	//set div to id game over
+	let gameOverPopup = document.querySelector('.game-over-popup');
+	gameOverPopup.setAttribute('class', 'show');
+	let gameOverDiv = document.querySelector('.game-over');
+	gameOverDiv.classList.add(currPlayer);
 
-///game over popup from memory game to be reworked
+	//winner text
+	let winnerBox = document.querySelector('#winner');
 
-// if (matchedCards.length === 10) {
-// 	//set div to id game over
-// 	let gameOverPopup = document.querySelector('.game-over-popup');
-// 	gameOverPopup.setAttribute('class', 'show');
-// 	// button for restart
+	// button for restart
 
-// 	const playAgainButton = document.querySelector('#new-game');
-// 	playAgainButton.addEventListener('click', function () {
-// 		window.location.reload();
-// 	});
+	const playAgainButton = document.querySelector('#new-game');
+	playAgainButton.addEventListener('click', function () {
+		window.location.reload();
+	});
 
-// 	// save score to high score if its the best
-// 	if (score < highScore || highScore === 0) {
-// 		highScore = score;
-// 		localStorage.setItem('highScore', highScore);
-// 	}
+	if (currPlayer === 'player1') {
+		player1Score++;
+		winnerBox.innerText = 'Player 1 Wins!';
+	}
+	if (currPlayer === 'player2') {
+		player2Score++;
+		winnerBox.innerText = 'Player 2 Wins!';
+	}
+	localStorage.setItem('player1Score', player1Score);
+	localStorage.setItem('player2Score', player2Score);
+	player1ScoreDiv.innerText = `Player 1: ${player1Score}`;
+	player2ScoreDiv.innerText = `Player 2: ${player2Score}`;
+};
 
-// 	let highScoreDiv = document.querySelector('#high-score');
+resetSwitch.addEventListener('click', function () {
+	localStorage.clear();
+	player1Score = 0;
+	player2Score = 0;
+	player1ScoreDiv.innerText = `Player 1: 0`;
+	player2ScoreDiv.innerText = `Player 2: 0`;
 
-// 	highScoreDiv.innerText = `High Score: ${highScore}`;
-
-// 	let yourScoreDiv = document.querySelector('#your-score');
-// 	yourScoreDiv.innerText = `Your score: ${score}`;
-
-// 	// save high score and theme to local storage
-// 	console.log('game-over');
-// }
+	return console.log('cleared');
+});

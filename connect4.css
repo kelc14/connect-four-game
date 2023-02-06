@@ -38,6 +38,7 @@ div#header {
 	width: 100vw;
 	height: 8vh;
 }
+
 #header-left {
 	/* background-color: blue; */
 	width: 25vw;
@@ -45,34 +46,97 @@ div#header {
 #header-left a {
 	font-family: var(--theme-font);
 	color: black;
-	font-size: 1.5rem;
+	font-size: 2.5vh;
+	padding: 10px;
 	font-weight: 900;
 	position: absolute;
-	top: 10px;
+	top: 5px;
 	left: 30px;
+	width: 10vw;
 	margin: 0;
-	word-wrap: normal;
 	text-decoration: none;
+	text-align: center;
 	background: #001aff;
 	border: 4px dotted lightgray;
+}
+#header-left a:hover {
+	background-color: #00ffaa;
 }
 
 #header-center {
 	/* background-color: red; */
 	width: 50vw;
 }
+h1 {
+	font-family: var(--theme-font);
+	color: var(--theme-font-color);
+	font-size: 5.5vh;
+	padding: 5px;
+	font-weight: 900;
+	text-align: center;
+	margin: 0;
+}
+
 #header-right {
 	/* background-color: yellow; */
 	width: 25vw;
 }
-
-h1 {
+#player-scores {
+	position: fixed;
+	top: 5px;
+	right: 30px;
+	height: 5.5vh;
+	width: 12vw;
+	padding: 10px;
+	margin: 0;
+	background: #001aff;
+	border: 4px dotted lightgray;
+}
+.player-score-span {
 	font-family: var(--theme-font);
-	color: var(--theme-font-color);
-	font-size: 2.5rem;
+	font-size: 2vh;
+	position: relative;
+	top: 3px;
+	right: 3px;
+	width: 12vw;
+	margin: 0;
+	font-weight: 900;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+#player1-score {
+	color: var(--player-1-color);
+	padding-bottom: 0px;
+}
+#player2-score {
+	color: var(--player-2-color);
+	padding-top: 0px;
+}
+#reset {
+	position: fixed;
+	display: inline-block;
+	top: 5px;
+	right: 30px;
+	width: 15vw;
+	height: 9vh;
+	color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+	border: 4px solid rgba(0, 0, 0, 0);
+	font-family: var(--theme-font);
+	font-size: 18px;
+	padding: 20px;
+	padding-bottom: 20px;
 	font-weight: 900;
 	text-align: center;
-	margin: 0;
+}
+
+#reset:hover {
+	color: black;
+	background-color: #00ffaa;
+	border: 4px dotted white;
+	z-index: 1;
+	cursor: pointer;
 }
 
 div#game {
@@ -112,18 +176,12 @@ div.player2 {
 	background-color: var(--player-2-color);
 }
 
-/* TODO: make pieces red/blue,  depending on player 1/2 piece */
-
 /* column-top is table row of clickable areas for each column */
 
 #column-top td {
 	border: dashed 1px lightgray;
 	padding: 0px;
 }
-
-/* #column-top td:hover {
-	background-color: gold;
-} */
 
 .triangle-down {
 	font-size: 5rem;
@@ -138,7 +196,7 @@ div.triangle-down:hover {
 		0 0 82px #00ffaa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
 }
 
-/* from popup in memory game */
+/* end of game pop-up */
 
 .show {
 	display: block;
@@ -154,16 +212,15 @@ div.triangle-down:hover {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
-	font-family: 'Roboto Mono', monospace;
+	font-family: var(--theme-font);
 	font-weight: 700;
 	font-size: 50px;
-	background-color: white;
 	width: 60%;
 	height: 60%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	border: 5px solid black;
+	border: 4px dotted lightgray;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 3;
 }
@@ -171,20 +228,21 @@ div.triangle-down:hover {
 .new-game {
 	width: 50%;
 	height: 150px;
-	font-family: 'Roboto Mono', monospace;
+	font-family: var(--theme-font);
 	font-weight: 700;
 	font-size: 50px;
-	background-color: rgba(0, 0, 0, 0.2);
-	color: black;
+	color: white;
 	border-radius: 20px;
 	margin: 0;
 	padding: 0px;
 	left: 50%;
+	background-color: black;
+	border: 4px dotted white;
 }
 
 .new-game:hover {
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: black;
 }
 
 #score {

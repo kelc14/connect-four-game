@@ -10,9 +10,16 @@
 <body>
 <div id="page">
   <div id="header">
-    <div id="header-left"> <a href="index.html">NEW GAME</a></div>
+    <div id="header-left"> <a href="index.html">NEW <br> GAME</a></div>
     <div id="header-center"><h1>CONNECT FOUR</h1></div>
-    <div id="header-right"></div>
+    <div id="header-right"> 
+      <div id="player-scores">
+        <span class="player-score-span" id="player1-score"></span> 
+        <span class="player-score-span" id="player2-score"></span>
+        <button id="reset">RESET</button>
+      </div>
+      
+    </div>
   </div>
   <div id="game">
     <table id="board"></table>
@@ -22,14 +29,11 @@
 <!-- game - over pop-up -->
 <div class="game-over-popup">
   <div class="game-over">
-    <span>YOU WIN!</span>
+    <span>GAME OVER</span>
+    <span id="winner"></span>
     <span><button class="new-game" id="new-game">PLAY AGAIN</button></span>
-    <span class='score' id="player1-score"></span>
-    <span class='score' id="player2-score"></span>
   </div>
 </div>
-
-
 
 <script src="connect4.js"></script>
 
